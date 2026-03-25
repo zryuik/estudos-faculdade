@@ -1,20 +1,20 @@
 #include <stdio.h>
+#include <string.h>
 
-/* Variavel simples */
-int a;
+struct Interno {
+    char m2[20];
+};
 
-/* Variavel ponteiro */
-int *p;
+struct Externo {
+    struct Interno m1;
+};
 
-/* Variavel simples */
-int b;
+int main() {
+    struct Externo obj;
 
-int main(void) {
-    a = 10;
-    p = &a; // p aponta para o endereço de a que e importante analisar
-    b = *p + 5;
-    printf("a: %d\n", a);
-    printf("a: %p\n", p);
-    printf("a: %d\n", b);
+    strcpy(obj.m1.m2, "Olá Mundo");
 
+    printf("%s\n", obj.m1.m2);
+
+    return 0;
 }

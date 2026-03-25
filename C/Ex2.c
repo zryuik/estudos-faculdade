@@ -1,10 +1,20 @@
-/* Exemplo com erro */
+#include <stdio.h>
+#include <time.h>
 
-int main (void) {
-    int a, b, *p;
-    a = 2;
-    *p = 3;
-    b = a + (*p);
-    printf(" %d ", b);
+int main() {
+    time_t t;
+    struct tm *data;
+
+    time(&t);
+
+    t += 2 * 86400;
+
+    data = localtime(&t);
+
+    printf("%02d/%02d/%d\n",
+            data->tm_mday,
+            data->tm_mon + 1,
+            data->tm_year + 1900);
+
     return 0;
 }

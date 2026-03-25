@@ -1,17 +1,19 @@
-int a, *p, c;
+#include <stdio.h>
+#include <time.h>
 
-/*a recebe o valor de 5*/
+int main(){
+    time_t t;
+    struct tm *data;
 
-a = 5;
+    time(&t); 
+    data = localtime(&t);
 
-/* p recebe o endereço de a (p aponta para a)*/
+    printf("%02d/%02d/%d\n",
+            data->tm_mday,
+            data->tm_mon + 1,
+            data->tm_year + 1900);
+    
+            return 0;
+       
+}
 
-p = &a;
-
-/* posição de memória apontada por p recebe 6 */
-
-*p = 6;
-
-/* c recebe o valor armazenado na posição de memória apontada por p */
-
-c = *p;
